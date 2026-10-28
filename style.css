@@ -1,0 +1,162 @@
+/* 共通：851px幅の素材を比率そのままで表示 */
+* { box-sizing: border-box; }
+body { margin: 0; color: #49333d; background: #f9edf2; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
+img { display: block; width: 100%; height: auto; }
+h1, h2, ul { margin: 0; padding: 0; }
+a { color: inherit; }
+button { font: inherit; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid #542b62; outline-offset: 4px; }
+.lp { width: 100%; max-width: 600px; margin: 0 auto; background: #fff6f8; }
+.fv, .about, .voice, .benefits, .offer-end, .footer { position: relative; }
+
+/* FV / メッセージ */
+.fv-title { position: absolute; top: 25%; left: 0; width: 89.3%; }
+.about-title { position: absolute; top: 13.5%; left: 23%; width: 70.6%; }
+
+/* CTA：リンク先は script.js に集約 */
+.cta { display: block; width: 96%; margin: 0 auto; animation: pulse 2s ease-in-out infinite; transform-origin: center; }
+@keyframes pulse {
+  0%, 100% { transform: scale(.96); }
+  50% { transform: scale(1); }
+}
+.cta[href] { cursor: pointer; transition: filter .2s; }
+.cta[href]:hover { filter: brightness(1.07); }
+.cta[aria-disabled="true"] { cursor: default; }
+
+/* section-02を通過したら表示する追従CTA */
+.float-cta { position: fixed; z-index: 20; left: 50%; bottom: calc(8px + env(safe-area-inset-bottom, 0px)); width: calc(100% - 16px); max-width: 584px; opacity: 0; visibility: hidden; transform: translate(-50%, 20px); pointer-events: none; transition: opacity .35s ease, transform .35s ease, visibility .35s; }
+.float-cta.visible { opacity: 1; visibility: visible; transform: translate(-50%, 0); pointer-events: auto; }
+.float-cta .cta { width: 100%; }
+
+/* 受講生の声 */
+.voice-list { position: absolute; top: 24.5%; left: 0; width: 100%; display: flex; gap: 4%; padding: 0 11%; overflow-x: auto; list-style: none; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.voice-list::-webkit-scrollbar { display: none; }
+.voice-list li { flex: 0 0 100%; scroll-snap-align: center; }
+.voice-nav { position: absolute; inset: 0; pointer-events: none; }
+.voice-nav > button { position: absolute; top: 48%; display: grid; place-items: center; width: 10%; max-width: 44px; aspect-ratio: 1; padding: 0; border: 1px solid #a84065; border-radius: 50%; background: #fff9fc; color: #963655; font-size: 28px; cursor: pointer; pointer-events: auto; }
+.voice-nav > button:first-child { left: .5%; }
+.voice-nav > button:last-child { right: .5%; }
+.voice-nav > button:disabled { opacity: .35; cursor: default; }
+.voice-dots { position: absolute; top: 78%; left: 0; width: 100%; display: flex; justify-content: center; gap: 2px; }
+.voice-dots button { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: transparent; cursor: pointer; pointer-events: auto; }
+.voice-dots button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #d8b3c2; }
+.voice-dots button[aria-current="true"]::before { background: #a84065; transform: scale(1.2); }
+.voice-cta { position: absolute; bottom: 2%; left: 2%; }
+
+/* 相談特典 */
+.benefits-list > .sparkle { margin-top: -7%; }
+.sparkle { position: relative; }
+.sparkle .kira { position: absolute; top: 0; left: 0; width: 100%; mix-blend-mode: screen; pointer-events: none; }
+.benefits-list { position: absolute; top: -1.5%; left: 0; width: 100%; }
+.offer-cta { position: absolute; bottom: 7%; left: 2%; }
+
+/* 追加セクション：完成画像の切り替わり位置と余白に合わせる */
+.section { position: relative; overflow: hidden; }
+.section .base { position: absolute; top: 0; left: 0; }
+
+/* 働き方の悩み */
+.problem { aspect-ratio: 851 / 2017; }
+.problem .text { position: absolute; }
+.problem .text1 { top: 22.806%; left: 45.7109%; width: 48.7662%; }
+.problem .text2 { top: 36.787%; left: 7.8731%; width: 50.8813%; }
+.problem .text3 { top: 47.843%; left: 40.5405%; width: 50.6463%; }
+.problem .text4 { top: 62.915%; left: 4.3478%; width: 56.2867%; }
+.problem .text5 { top: 75.508%; left: 44.4183%; width: 49.2362%; }
+
+/* 収入 / 副業の比較 / 講師メッセージ */
+.income { aspect-ratio: 851 / 1948; background: #f7e9e9; }
+.methods { aspect-ratio: 851 / 1515; background: #fff7f4; }
+.message { aspect-ratio: 851 / 2035; }
+
+/* アートメイクを選ぶ3つの理由 */
+.reason { aspect-ratio: 851 / 2012; }
+.reason .card { position: absolute; left: 3.2902%; width: 93.5370%; }
+.reason .card1 { top: 24.105%; }
+.reason .card2 { top: 39.911%; }
+.reason .card3 { top: 55.467%; }
+
+/* 講習動画 / メディア紹介 / 無料相談 */
+.lesson { aspect-ratio: 851 / 1943; }
+.lesson-video { position: absolute; top: 20.5%; left: 7.2%; width: 85.6%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 6px; }
+.lesson-video video, .lesson-video iframe { display: block; width: 100%; height: 100%; border: 0; }
+.lesson-label { position: absolute; top: 38.394%; left: 3.6428%; width: 65.0999%; pointer-events: none; }
+.lesson-cta { position: absolute; top: 76.017%; left: 2.8202%; width: 94.7121%; }
+
+/* 選ばれる理由 */
+.features { aspect-ratio: 851 / 3192; }
+.features .title { position: absolute; }
+.features .title1 { top: 25.125%; left: 21.974%; width: 68.155%; }
+.features .title2 { top: 49.185%; left: 21.152%; width: 47.474%; }
+.features .title3 { top: 75.595%; left: 21.152%; width: 67.450%; }
+
+/* 3つの自由 / お客様の変化 */
+.freedom { aspect-ratio: 851 / 1444; }
+.customer { aspect-ratio: 851 / 1363; }
+.result { aspect-ratio: 851 / 2341; }
+.result-cta { position: absolute; bottom: 3%; left: 2%; }
+
+/* 仲間のサポート / デビューまでの5ステップ */
+.support { aspect-ratio: 851 / 1874; }
+.roadmap { aspect-ratio: 851 / 2765; }
+.roadmap .step { position: absolute; left: 4.935%; width: 92.479%; }
+.roadmap .step1 { top: 27.016%; }
+.roadmap .step2 { top: 41.374%; }
+.roadmap .step3 { top: 55.769%; }
+.roadmap .step4 { top: 70.127%; }
+.roadmap .step5 { top: 84.376%; }
+.follow { aspect-ratio: 851 / 782; }
+.day { aspect-ratio: 851 / 1866; }
+
+/* 先輩の体験記：写真に縦書きの見出しを重ねる */
+.story-title { position: absolute; }
+.story1 { aspect-ratio: 851 / 1756; }
+.story1 .story-title { top: 31.72%; left: 9.988%; width: 19.741%; }
+.story2 { aspect-ratio: 851 / 1378; }
+.story2 .story-title { top: 3.411%; left: 69.800%; width: 20.329%; }
+.story3 { aspect-ratio: 851 / 1606; background: #fff; }
+.story3 .story-title { top: 3.176%; left: 7.051%; width: 22.444%; }
+.story-cta { position: absolute; top: 77.024%; left: .823%; width: 98.355%; }
+
+/* よくある質問 / CHISATOからのメッセージ */
+.faq { aspect-ratio: 851 / 1796; }
+.letter { aspect-ratio: 851 / 2432; background: #fff0f2; }
+.letter-title { position: absolute; top: 9.539%; left: 2.350%; width: 52.174%; }
+.letter-end { position: absolute; top: 84.622%; left: .940%; width: 97.767%; }
+
+/* 無料相談 / 一年後の変化 */
+.consult { aspect-ratio: 851 / 3179; }
+.consult-title { position: absolute; top: 6.197%; left: 2.115%; width: 96.240%; }
+.consult-cta { position: absolute; top: 67.034%; left: .823%; width: 98.355%; }
+.future { aspect-ratio: 851 / 2467; }
+.future-title { position: absolute; top: 35.549%; left: 11.751%; width: 78.378%; }
+
+/* 最後の相談案内 / 2つのメリット */
+.closing { aspect-ratio: 851 / 1506; background: #fff4f5; }
+.closing-image { position: absolute; top: -374.9004%; left: 0; width: 100%; }
+.gifts { aspect-ratio: 851 / 2381; overflow: visible; }
+.gifts .gift { position: absolute; left: 0; width: 100%; }
+.gifts .gift1 { top: -.420%; }
+.gifts .gift2 { top: 34.019%; }
+.gifts-cta { position: absolute; top: 80.218%; left: .823%; width: 98.355%; }
+
+/* フッター */
+.footer { padding: 4% 3% 6%; background: #4f1f3d; color: #fff; text-align: center; }
+.footer-logo { margin: 0 0 2%; font-family: "Times New Roman", "Yu Mincho", serif; font-size: 14px; font-weight: 400; line-height: 1.5; }
+.footer nav { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 4px; font-size: clamp(10px, 1.88vw, 11.3px); line-height: 1.5; }
+.footer a { text-decoration: none; white-space: nowrap; }
+.footer a + a::before { content: "/"; display: inline-block; margin: 0 .45em; }
+.footer a[href]:hover { text-decoration: underline; text-underline-offset: .2em; }
+
+/* 画像名が -img / -txt（連番含む）の要素を一度だけふわっと表示 */
+.reveal, .sparkle.reveal > img { opacity: 0; transform: translateY(28px); }
+.reveal.visible, .sparkle.reveal.visible > img { opacity: 1; transform: none; transition: opacity 1.1s ease, transform 1.1s cubic-bezier(.22, 1, .36, 1); }
+/* 親に透明度や変形を付けず、screenの背景合成を維持する */
+.sparkle.reveal { opacity: 1; transform: none; transition: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.visible, .sparkle.reveal > img, .sparkle.reveal.visible > img { opacity: 1; transform: none; transition: none; }
+  .float-cta { transition: none; }
+  .cta { animation: none; }
+  .cta[href] { transition: none; }
+}
