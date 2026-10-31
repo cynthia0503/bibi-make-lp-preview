@@ -29,25 +29,28 @@ button { font: inherit; }
 .float-cta.visible { opacity: 1; visibility: visible; transform: translate(-50%, 0); pointer-events: auto; }
 .float-cta .cta { width: 100%; }
 
-/* 受講生の声 */
-.voice-list { position: absolute; top: 24.5%; left: 0; width: 100%; display: flex; gap: 4%; padding: 0 11%; overflow-x: auto; list-style: none; scroll-snap-type: x mandatory; scrollbar-width: none; }
+/* 受講生の声：カードはLP幅の95%。背景の見出しは元の比率を維持 */
+.voice { isolation: isolate; padding: 48.77% 0 2%; background: #e3a7bb; }
+.voice > img { position: absolute; top: 0; left: 0; z-index: -1; mask-image: linear-gradient(#000 85%, transparent); }
+.voice-list { position: relative; width: 95%; margin: 0 auto; display: flex; padding: 0; overflow-x: auto; list-style: none; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .voice-list::-webkit-scrollbar { display: none; }
 .voice-list li { flex: 0 0 100%; scroll-snap-align: center; }
-.voice-nav { position: absolute; inset: 0; pointer-events: none; }
+.voice-nav { pointer-events: none; }
 .voice-nav > button { position: absolute; top: 48%; display: grid; place-items: center; width: 10%; max-width: 44px; aspect-ratio: 1; padding: 0; border: 1px solid #a84065; border-radius: 50%; background: #fff9fc; color: #963655; font-size: 28px; cursor: pointer; pointer-events: auto; }
 .voice-nav > button:first-child { left: .5%; }
 .voice-nav > button:last-child { right: .5%; }
 .voice-nav > button:disabled { opacity: .35; cursor: default; }
-.voice-dots { position: absolute; top: 78%; left: 0; width: 100%; display: flex; justify-content: center; gap: 2px; }
+.voice-dots { display: flex; justify-content: center; align-items: center; min-height: 36px; gap: 2px; }
 .voice-dots button { display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; background: transparent; cursor: pointer; pointer-events: auto; }
 .voice-dots button::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #d8b3c2; }
 .voice-dots button[aria-current="true"]::before { background: #a84065; transform: scale(1.2); }
-.voice-cta { position: absolute; bottom: 2%; left: 2%; }
+.voice-cta { position: relative; margin-top: 2%; }
 
 /* 相談特典 */
 .benefits-list > .sparkle { margin-top: -7%; }
 .sparkle { position: relative; }
-.sparkle .kira { position: absolute; top: 0; left: 0; width: 100%; mix-blend-mode: screen; pointer-events: none; }
+/* 黒い星芒は輝度マスクで透明化。合成レイヤーが変わっても黒が露出しない。 */
+.sparkle .kira { position: absolute; top: 0; left: 0; width: 100%; mix-blend-mode: screen; pointer-events: none; filter: brightness(0) invert(1); mask-image: url("img/kira.webp"); mask-mode: luminance; mask-size: 100% 100%; mask-repeat: no-repeat; }
 .benefits-list { position: absolute; top: -1.5%; left: 0; width: 100%; }
 .offer-cta { position: absolute; bottom: 7%; left: 2%; }
 
@@ -67,7 +70,8 @@ button { font: inherit; }
 /* 収入 / 副業の比較 / 講師メッセージ */
 .income { aspect-ratio: 851 / 1948; background: #f7e9e9; }
 .methods { aspect-ratio: 851 / 1515; background: #fff7f4; }
-.message { aspect-ratio: 851 / 2035; }
+.message { aspect-ratio: 851 / 2036; }
+.message-img { position: absolute; top: 11.0511%; left: 3.1727%; width: 93.7720%; }
 
 /* アートメイクを選ぶ3つの理由 */
 .reason { aspect-ratio: 851 / 2012; }
@@ -94,7 +98,7 @@ button { font: inherit; }
 .freedom { aspect-ratio: 851 / 1444; }
 .customer { aspect-ratio: 851 / 1363; }
 .result { aspect-ratio: 851 / 2341; }
-.result-cta { position: absolute; bottom: 3%; left: 2%; }
+.result-cta { position: absolute; bottom: 1%; left: 2%; }
 
 /* 仲間のサポート / デビューまでの5ステップ */
 .support { aspect-ratio: 851 / 1874; }
